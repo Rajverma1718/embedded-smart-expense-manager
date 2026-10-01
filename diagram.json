@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "author": "Ram verma",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 120, "left": 20, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": 20, "left": 350, "attrs": { "pins": "i2c", "i2cAddress": "0x27", "background": "blue", "color": "white" } },
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": 190, "left": 350, "attrs": { "initTime": "now" } },
+    { "type": "wokwi-pushbutton", "id": "meal", "top": 45, "left": 610, "attrs": { "color": "red", "label": "MEAL +100" } },
+    { "type": "wokwi-pushbutton", "id": "travel", "top": 130, "left": 610, "attrs": { "color": "blue", "label": "TRAVEL +200" } },
+    { "type": "wokwi-pushbutton", "id": "bills", "top": 215, "left": 610, "attrs": { "color": "green", "label": "BILLS +500" } },
+    { "type": "wokwi-pushbutton", "id": "reset", "top": 300, "left": 610, "attrs": { "color": "white", "label": "RESET HOLD" } },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": 400, "left": 350, "attrs": { "volume": "0.12" } },
+    { "type": "wokwi-led", "id": "green", "top": 390, "left": 520, "attrs": { "color": "green", "label": "NORMAL" } },
+    { "type": "wokwi-led", "id": "yellow", "top": 435, "left": 520, "attrs": { "color": "yellow", "label": "WARNING" } },
+    { "type": "wokwi-led", "id": "red", "top": 480, "left": 520, "attrs": { "color": "red", "label": "CRITICAL" } }
+  ],
+  "connections": [
+    [ "esp:21", "lcd1:SDA", "blue", [ "h0" ] ], [ "esp:22", "lcd1:SCL", "blue", [ "h0" ] ], [ "esp:3V3", "lcd1:VCC", "red", [ "h0" ] ], [ "esp:GND.1", "lcd1:GND", "black", [ "h0" ] ],
+    [ "esp:21", "rtc1:SDA", "blue", [ "h0" ] ], [ "esp:22", "rtc1:SCL", "blue", [ "h0" ] ], [ "esp:3V3", "rtc1:5V", "red", [ "h0" ] ], [ "esp:GND.1", "rtc1:GND", "black", [ "h0" ] ],
+    [ "esp:13", "meal:1.l", "green", [ "h0" ] ], [ "esp:GND.1", "meal:2.l", "black", [ "h0" ] ], [ "esp:12", "travel:1.l", "green", [ "h0" ] ], [ "esp:GND.1", "travel:2.l", "black", [ "h0" ] ],
+    [ "esp:14", "bills:1.l", "green", [ "h0" ] ], [ "esp:GND.1", "bills:2.l", "black", [ "h0" ] ], [ "esp:27", "reset:1.l", "green", [ "h0" ] ], [ "esp:GND.1", "reset:2.l", "black", [ "h0" ] ],
+    [ "esp:26", "buzzer:1", "orange", [ "h0" ] ], [ "esp:GND.1", "buzzer:2", "black", [ "h0" ] ], [ "esp:25", "green:A", "green", [ "h0" ] ], [ "esp:GND.1", "green:C", "black", [ "h0" ] ],
+    [ "esp:32", "yellow:A", "yellow", [ "h0" ] ], [ "esp:GND.1", "yellow:C", "black", [ "h0" ] ], [ "esp:33", "red:A", "red", [ "h0" ] ], [ "esp:GND.1", "red:C", "black", [ "h0" ] ]
+  ],
+  "serialMonitor": { "display": "always", "newline": "lf", "convertEol": true },
+  "dependencies": {}
+}
