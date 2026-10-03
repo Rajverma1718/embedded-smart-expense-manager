@@ -16,7 +16,7 @@ constexpr uint32_t DEBOUNCE_MS=35, RESET_HOLD_MS=2000, PAGE_MS=4500, TICK_MS=250
 LiquidCrystal_I2C lcd(0x27,16,2);
 RTC_DS1307 rtc;
 
-struct State { uint32_t magic; uint16_t version; uint16_t reserved; uint32_t sequence; int32_t total; int32_t budget; uint32_t count; int32_t lastAmount; uint32_t lastTimestamp; uint16_t crc; uint8_t padding[26]; };
+struct State { uint32_t magic; uint16_t version; uint16_t reserved; uint32_t sequence; int32_t total; int32_t budget; uint32_t count; int32_t lastAmount; uint32_t lastTimestamp; uint16_t crc; uint8_t padding[30]; };
 static_assert(sizeof(State)==SLOT_BYTES,"State must be 64 bytes");
 struct Button { uint8_t pin; bool raw; bool stable; uint32_t changed; };
 State st{};
